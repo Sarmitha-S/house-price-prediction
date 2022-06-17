@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+
+<head>
+    <meta charset="UTF-8">
+
+
+
+    <style>
+        h1 {
+            color: rgb(224, 64, 64);
+            text-align: center;
+            font-size: 45px;
+            background-color: powderblue;
+            font-style: italic
+        }
+        
+        h2 {
+            color: rgb(59, 2, 2);
+            text-align: center;
+            background-color: powderblue;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-items: center;
+        }
+        
+        body {
+            background-color: turquoise;
+        }
+        
+        form input {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px 40px;
+            border-radius: 10px;
+        }
+        
+        form button {
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        
+        .login {
+            text-align: center;
+        }
+        
+        .pred {
+            background-color: aqua;
+            padding: 10px 20px;
+            border-radius: 80px;
+        }
+        
+        body {
+            background-image: url('/static/pic.jpg');
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="login">
+        <h1>House price predictor</h1>
+        <h2>By Sarmi</h2>
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="text" name="squareMeters" placeholder="Enter the Square meters" required="required" />
+            <input type="text" name="numberOfRooms" placeholder="enter Number of rooms" required="required" />
+            <input type="text" name="hasYard" placeholder="Does it contain yard?" required="required" />
+            <input type="text" name="hasPool" placeholder="Is there a pool?" required="required" />
+            <input type="text" name="floors" placeholder="enter the no of floors" required="required" />
+            <input type="text" name="cityCode" placeholder="enter the citycode" required="required" />
+            <input type="text" name="cityPartRange" placeholder="enter city part range" required="required" />
+            <input type="text" name="numPrevOwners" placeholder="enter no of previous owners" required="required" />
+            <input type="text" name="made" placeholder="enter the year house is made" required="required" />
+            <input type="text" name="isNewBuilt" placeholder="Is the house newly built?" required="required" />
+            <input type="text" name="hasStormProtector" placeholder="Does it has storm protector?" required="required" />
+            <input type="text" name="basement" placeholder="enter the Basement value" required="required" />
+            <input type="text" name="attic" placeholder="enter the attic value" required="required" />
+            <input type="text" name="garage" placeholder="enter the garage value" required="required" />
+            <input type="text" name="hasStorageRoom" placeholder="Does it contain storage room?" required="required" />
+            <input type="text" name="hasGuestRoom" placeholder="Is there guest room?" required="required" />
+
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+        </form>
+
+        <br>
+        <br>
+        <div class="pred">
+            {{ prediction_text }}
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
